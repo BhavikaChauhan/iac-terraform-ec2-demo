@@ -1,56 +1,23 @@
-provider "aws" {
-  region = "us-east-1"
-}
+resource "aws_instance" "web_server" {
+  ami                         = "ami-020cba7c55df1f615"
+  instance_type               = var.instance_type
+  key_name                    = "awskey"
+  associate_public_ip_address = true
 
-resource "aws_key_pair" "deployer" {
-  key_name   = "awskey"
-  public_key = file("C:/Users/bhavika chauhan/.ssh/id_rsa.pub")
-}
-
-
-resource "aws_security_group" "web_sg" {
-  name        = "web_sg"
-  description = "Allow SSH and HTTP"
-  
-  ingress {
-    description = "SSH"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    description = "HTTP"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-resource "aws_instance" "web" {
-  ami           = "ami-0c55b159cbfafe1f0" # Replace with your region's Ubuntu AMI
-  instance_type = "t2.micro"
-  key_name      = aws_key_pair.deployer.key_name
-  security_groups = [aws_security_group.web_sg.name]
+  vpc_security_group_ids = [
+    aws_security_group.web_sg.id
+  ]
 
   user_data = <<-EOF
-              #!/bin/bash
-              apt update
-              apt install -y nginx
-              systemctl enable nginx
-              systemctl start nginx
-            EOF
+    #!/bin/bash
+    apt-get update -y
+    apt-get install nginx -y
+    systemctl start nginx
+    systemctl enable nginx
+    echo "<h1>Terraform EC2 Demo by Bhavika</h1>" > /var/www/html/index.nginx-debian.html
+  EOF
 
   tags = {
-    Name = "nginx-server"
+    Name = "Terraform-Web-Server"
   }
 }
