@@ -1,12 +1,12 @@
-resource "aws_instance" "web_server" {
 provider "aws" {
-  region = "us-west-1"
+  region = "us-east-1"
 }
 
 resource "aws_key_pair" "deployer" {
-  key_name   = "my-key"
-  public_key = file("~/.ssh/id_rsa.pub")
+  key_name   = "awskey"
+  public_key = file("C:/Users/bhavika chauhan/.ssh/id_rsa.pub")
 }
+
 
 resource "aws_security_group" "web_sg" {
   name        = "web_sg"
