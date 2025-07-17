@@ -5,11 +5,11 @@ variable "instance_type" {
 }
 
 variable "key_name" {
-  description = "Name of the existing AWS key pair"
+  description = "awskey"
   type        = string
 }
 
 variable "ami_id" {
-  description = "AMI ID for EC2 instance"
+  description = "ami-020cba7c55df1f615"
   type        = string
 }

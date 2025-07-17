@@ -1,7 +1,7 @@
 resource "aws_instance" "web_server" {
-  ami                    = var.ami_id
+  ami                    = ami-020cba7c55df1f615
   instance_type          = var.instance_type
-  key_name               = var.key_name
+  key_name               = awskey
   associate_public_ip_address = true
 
   user_data = <<-EOF

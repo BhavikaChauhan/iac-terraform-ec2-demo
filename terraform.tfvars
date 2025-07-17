@@ -1,2 +1,2 @@
-key_name = "your-existing-keypair-name"
-ami_id   = "ami-0c02fb55956c7d316"  # Amazon Linux 2 (us-east-1)
+key_name = "awskey"
+ami_id   ="ami-020cba7c55df1f615"(us-east-1)
