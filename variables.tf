@@ -10,6 +10,6 @@ variable "key_name" {
 }
 
 variable "ami_id" {
-  description = "ami-020cba7c55df1f615"
+  description = "ami-id"
   type        = string
 }

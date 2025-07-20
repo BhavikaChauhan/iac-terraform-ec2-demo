@@ -1,7 +1,7 @@
 resource "aws_instance" "web_server" {
-  ami                         = "ami-020cba7c55df1f615"
+  ami                         = "ami-id"
   instance_type               = var.instance_type
-  key_name                    = "awskey"
+  key_name                    = "Key"
   associate_public_ip_address = true
 
   vpc_security_group_ids = [
