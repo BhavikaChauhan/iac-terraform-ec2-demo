@@ -28,15 +28,6 @@ iac-terraform-ec2-demo/
 ├── main.tf          # EC2 instance configuration
 ├── outputs.tf       # Output instance ID & public IP
 ````
-## 📌 Architecture Diagram
-
-```mermaid
-graph TD;
-    CLI[Terraform CLI] --> AWS[AWS Provider];
-    AWS --> EC2[EC2 Instance];
-    EC2 --> NGINX[NGINX Installed];
-
----
 
 ## 🚀 Getting Started
 
@@ -82,14 +73,6 @@ Open the output IP in your browser to see the NGINX welcome page.
 terraform destroy
 # Confirm with "yes"
 ```
-
----
-
-## 📷 Demo Output
-
-<img src="https://raw.githubusercontent.com/BhavikaChauhan/iac-terraform-ec2-demo/main/demo-output.png" alt="Terraform EC2 Output" width="600"/>
-
----
 
 ## 📄 Want More?
 
